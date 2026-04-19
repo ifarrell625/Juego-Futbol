@@ -60,7 +60,7 @@ func process_gravity(delta: float) -> void:
 		height += height_velocity
 		if height <= 0:
 			height = 0
-	#player_sprite.position = Vector2.UP * height
+	player_sprite.position = Vector2.UP * height
 
 
 func set_heading() -> void:
