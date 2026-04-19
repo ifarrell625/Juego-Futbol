@@ -11,6 +11,7 @@ var carrier : Player = null
 var player_detection_area : Area2D = null
 var sprite : Sprite2D = null
 
+
 func setup(context_ball: Ball, context_player_detection_area: Area2D, context_carrier: Player, context_animation_player: AnimationPlayer, context_sprite: Sprite2D) -> void:
 	ball = context_ball
 	player_detection_area = context_player_detection_area
@@ -45,3 +46,6 @@ func move_and_bounce(delta: float) -> void:
 	if collision != null:
 		ball.velocity = ball.velocity.bounce(collision.get_normal()) * ball.BOUNCINESS
 		ball.switch_state(ball.State.FREEFORM)
+
+func can_air_interact() -> bool:
+	return false
