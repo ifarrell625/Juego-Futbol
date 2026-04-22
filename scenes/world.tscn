@@ -17,6 +17,7 @@ size = Vector2(802, 7)
 [node name="World" type="Node2D" unique_id=1238256659]
 
 [node name="Camera" type="Camera2D" parent="." unique_id=1108209718 node_paths=PackedStringArray("ball")]
+position = Vector2(121, 96)
 limit_left = 0
 limit_top = 0
 limit_right = 850
@@ -107,19 +108,25 @@ collision_mask = 0
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ActorsContainer/PitchObjects/RightWall/StaticBody2D" unique_id=1156293184]
 polygon = PackedVector2Array(14, -1, 27, -1, 12, 116, 1, 116)
 
-[node name="Player" parent="ActorsContainer" unique_id=1436297331 node_paths=PackedStringArray("ball") instance=ExtResource("4_k0juu")]
-position = Vector2(102, 87)
+[node name="Player" parent="ActorsContainer" unique_id=1436297331 node_paths=PackedStringArray("ball", "own_goal", "target_goal") instance=ExtResource("4_k0juu")]
+position = Vector2(170, 151)
 ball = NodePath("../Ball")
 control_scheme = 1
+own_goal = NodePath("../PitchObjects/GoalHome")
+target_goal = NodePath("../PitchObjects/GoalAway")
 
-[node name="Player2" parent="ActorsContainer" unique_id=753036420 node_paths=PackedStringArray("ball") instance=ExtResource("4_k0juu")]
-position = Vector2(176, 99)
+[node name="Player2" parent="ActorsContainer" unique_id=753036420 node_paths=PackedStringArray("ball", "own_goal", "target_goal") instance=ExtResource("4_k0juu")]
+position = Vector2(101, 65)
 ball = NodePath("../Ball")
+own_goal = NodePath("../PitchObjects/GoalHome")
+target_goal = NodePath("../PitchObjects/GoalAway")
 
-[node name="Player3" parent="ActorsContainer" unique_id=754956081 node_paths=PackedStringArray("ball") instance=ExtResource("4_k0juu")]
-position = Vector2(93, 124)
+[node name="Player3" parent="ActorsContainer" unique_id=754956081 node_paths=PackedStringArray("ball", "own_goal", "target_goal") instance=ExtResource("4_k0juu")]
+position = Vector2(102, 158)
 ball = NodePath("../Ball")
 control_scheme = 2
+own_goal = NodePath("../PitchObjects/GoalHome")
+target_goal = NodePath("../PitchObjects/GoalAway")
 
 [node name="Ball" parent="ActorsContainer" unique_id=75473221 instance=ExtResource("5_71j4m")]
-position = Vector2(122, 102)
+position = Vector2(161, 177)
