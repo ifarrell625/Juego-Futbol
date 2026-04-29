@@ -299,7 +299,6 @@ libraries/ = SubResource("AnimationLibrary_dyp2m")
 autoplay = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=45018726]
-visible = false
 position = Vector2(0, -3)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_rp718")
@@ -311,7 +310,6 @@ collision_mask = 2
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="TeammateDetectionArea" unique_id=530881036]
-visible = false
 polygon = PackedVector2Array(0, -40, 280, -150, 330, -100, 330, 100, 280, 150, 0, 40)
 
 [node name="ShadowSprite" type="Sprite2D" parent="." unique_id=794274758]
@@ -321,7 +319,6 @@ offset = Vector2(-8, -15)
 
 [node name="BallDetectionArea" type="Area2D" parent="." unique_id=726472092]
 unique_name_in_owner = true
-visible = false
 position = Vector2(0, -8)
 collision_layer = 0
 collision_mask = 4
