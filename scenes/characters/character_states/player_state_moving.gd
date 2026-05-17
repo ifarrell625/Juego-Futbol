@@ -14,17 +14,17 @@ func handle_human_movement() -> void:
 	player.velocity = direction * player.speed
 	if player.velocity != Vector2.ZERO:
 		teammate_detection_area.rotation = player.velocity.angle() 
-
-
-	if player.has_ball(): 
-		if KeyUtils.is_action_just_pressed(player.control_scheme, KeyUtils.Action.PASS):
+	if KeyUtils.is_action_just_pressed(player.control_scheme, KeyUtils.Action.PASS):
+		if player.has_ball(): 
 			transition_state(Player.State.PASSING)
-		elif KeyUtils.is_action_just_pressed(player.control_scheme, KeyUtils.Action.SHOOT):
+		elif can_teammate_pass_ball():
+			ball.carrier.get_pass_request(player)
+		else:
+			player.swap_requested.emit(player)
+	elif  KeyUtils.is_action_just_pressed(player.control_scheme, KeyUtils.Action.SHOOT):
+		if player.has_ball():
 			transition_state(Player.State.PREPPING_SHOT)
-	elif can_teammate_pass_ball() and KeyUtils.is_action_just_pressed(player.control_scheme, KeyUtils.Action.PASS):
-		ball.carrier.get_pass_request(player)
-	elif KeyUtils.is_action_just_pressed(player.control_scheme, KeyUtils.Action.SHOOT):
-		if ball.can_air_interact():
+		elif ball.can_air_interact():
 			if player.velocity == Vector2.ZERO:
 				if player.is_facing_target_goal():
 					transition_state(Player.State.VOLLEY_KICK)
@@ -34,6 +34,7 @@ func handle_human_movement() -> void:
 				transition_state(Player.State.HEADER)
 		elif player.velocity != Vector2.ZERO:
 			state_transition_requested.emit(Player.State.TACKLING)
+
 
 func can_carry_ball() -> bool:
 	return player.role != Player.Role.GOALIE
