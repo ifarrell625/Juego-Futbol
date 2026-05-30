@@ -19,6 +19,7 @@ config/icon="res://icon.svg"
 
 KeyUtils="*uid://b77j4hx0nc46c"
 DataLoader="*uid://b4iah3ipd02rt"
+GameEvents="*uid://dv8d86wb1exte"
 
 [debug]
 
