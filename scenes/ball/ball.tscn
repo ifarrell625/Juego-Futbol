@@ -86,6 +86,9 @@ _data = {
 [sub_resource type="CircleShape2D" id="CircleShape2D_nv6q1"]
 radius = 4.0
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_jbgth"]
+radius = 60.0
+
 [node name="Ball" type="AnimatableBody2D" unique_id=75473221]
 collision_layer = 4
 collision_mask = 33
@@ -141,3 +144,13 @@ target_position = Vector2(80, 0)
 collision_mask = 16
 collide_with_areas = true
 collide_with_bodies = false
+
+[node name="PlayerProximityArea" type="Area2D" parent="." unique_id=1961011085]
+unique_name_in_owner = true
+position = Vector2(0, -5)
+collision_layer = 0
+collision_mask = 2
+monitorable = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerProximityArea" unique_id=280364032]
+shape = SubResource("CircleShape2D_jbgth")
