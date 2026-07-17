@@ -3,10 +3,27 @@
 [ext_resource type="Texture2D" uid="uid://uislcr50j0wd" path="res://assets/art/characters/soccer-player.png" id="1_rp718"]
 [ext_resource type="Script" uid="uid://24lgf0cglk2i" path="res://scenes/characters/player.gd" id="1_yewv4"]
 [ext_resource type="Shader" uid="uid://b4wa54kxlgqsi" path="res://shaders/replace_color.gdshader" id="2_atpat"]
+[ext_resource type="Texture2D" uid="uid://b1ircd0kn634n" path="res://assets/art/particles/white-circle.png" id="2_eojnx"]
 [ext_resource type="Texture2D" uid="uid://ct57ijpcogasp" path="res://assets/art/palettes/skin-colors-palette.png" id="3_6eyoc"]
 [ext_resource type="Texture2D" uid="uid://bouc6wlonwmn7" path="res://assets/art/characters/player-shadow.png" id="3_76oj4"]
 [ext_resource type="Texture2D" uid="uid://bwach6cxl2qdg" path="res://assets/art/props/1p.png" id="3_dyp2m"]
 [ext_resource type="Texture2D" uid="uid://bfwi6818atbg" path="res://assets/art/palettes/teams-color-palette.png" id="3_kqtwu"]
+
+[sub_resource type="Curve" id="Curve_qgnko"]
+_data = [Vector2(0.004854366, 0.24719107), 0.0, 0.0, 0, 0, Vector2(1, 1), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_7vyk4"]
+curve = SubResource("Curve_qgnko")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_2l4js"]
+particle_flag_disable_z = true
+emission_shape = 1
+emission_sphere_radius = 1.0
+gravity = Vector3(0, -80, 0)
+scale_min = 0.29999998
+scale_max = 0.79999995
+scale_curve = SubResource("CurveTexture_7vyk4")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_kqtwu"]
 resource_local_to_scene = true
@@ -400,6 +417,17 @@ collision_mask = 9
 script = ExtResource("1_yewv4")
 power = 150.0
 speed = 80.0
+
+[node name="RootParticles" type="Node2D" parent="." unique_id=281704842]
+unique_name_in_owner = true
+
+[node name="RunParticles" type="GPUParticles2D" parent="RootParticles" unique_id=812857451]
+unique_name_in_owner = true
+modulate = Color(1, 1, 1, 0.72156864)
+position = Vector2(-5, 0)
+texture = ExtResource("2_eojnx")
+lifetime = 0.4
+process_material = SubResource("ParticleProcessMaterial_2l4js")
 
 [node name="PlayerSprite" type="Sprite2D" parent="." unique_id=500018653]
 unique_name_in_owner = true
