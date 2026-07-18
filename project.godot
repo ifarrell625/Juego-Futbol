@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 DataLoader="*uid://b4iah3ipd02rt"
 GameEvents="*uid://dv8d86wb1exte"
 GameManager="*uid://m1gkuq24s05q"
+SoundPlayer="*uid://d4d2nmobhplv2"
 
 [debug]
 
