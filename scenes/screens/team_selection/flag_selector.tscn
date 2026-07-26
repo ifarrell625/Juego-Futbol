@@ -1,0 +1,109 @@
+[gd_scene format=3 uid="uid://begdccefw32xo"]
+
+[ext_resource type="Texture2D" uid="uid://dctvh50u4skt5" path="res://assets/art/ui/flags/flag-selection.png" id="1_m0b2l"]
+[ext_resource type="Texture2D" uid="uid://bwach6cxl2qdg" path="res://assets/art/props/1p.png" id="1_r46ak"]
+[ext_resource type="Script" uid="uid://b8jcjjk07fee6" path="res://scenes/screens/team_selection/flag_selector.gd" id="1_x1wlj"]
+[ext_resource type="Texture2D" uid="uid://bp5qnoyc6axnc" path="res://assets/art/props/2p.png" id="2_x1wlj"]
+
+[sub_resource type="Animation" id="Animation_r46ak"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_x1wlj"]
+resource_name = "selected"
+length = 0.1
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 0, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_rpwcj"]
+resource_name = "selecting"
+length = 0.4
+loop_mode = 1
+step = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Border:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 0, 1), Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_cu46s"]
+_data = {
+&"RESET": SubResource("Animation_r46ak"),
+&"selected": SubResource("Animation_x1wlj"),
+&"selecting": SubResource("Animation_rpwcj")
+}
+
+[node name="FlagSelector" type="Control" unique_id=1988127937]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_x1wlj")
+
+[node name="Indicator1P" type="TextureRect" parent="." unique_id=566387672]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = -4.0
+offset_top = -18.0
+offset_right = 11.0
+offset_bottom = -7.0
+scale = Vector2(2, 2)
+texture = ExtResource("1_r46ak")
+stretch_mode = 2
+
+[node name="Indicator2P" type="TextureRect" parent="." unique_id=1668696399]
+unique_name_in_owner = true
+layout_mode = 0
+offset_left = 18.0
+offset_top = -18.0
+offset_right = 33.0
+offset_bottom = -7.0
+scale = Vector2(2, 2)
+texture = ExtResource("2_x1wlj")
+stretch_mode = 2
+
+[node name="Border" type="TextureRect" parent="." unique_id=439422985]
+layout_mode = 0
+offset_left = -2.0
+offset_top = -2.0
+offset_right = 46.0
+offset_bottom = 30.0
+texture = ExtResource("1_m0b2l")
+stretch_mode = 2
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1269114001]
+unique_name_in_owner = true
+libraries/ = SubResource("AnimationLibrary_cu46s")
+autoplay = &"selecting"
